@@ -362,9 +362,10 @@ function App() {
                 style={{
                   position: "absolute",
                   top: 0,
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "250px",
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
                 }}
               />
             </div>
@@ -381,8 +382,8 @@ function App() {
                   onTouchMove={tournerFriteAuDoigt}
                   style={{
                     position: "absolute",
-                    bottom: "8px",
-                    left: "8px",
+                    bottom: "-18px",
+                    left: "30px",
                     width: "36px",
                     height: "36px",
                     borderRadius: "50%",
