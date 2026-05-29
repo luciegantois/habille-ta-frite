@@ -170,9 +170,14 @@ function App() {
 
       const canvas = await html2canvas(zoneRef.current, {
         backgroundColor: "#fff7d6",
-        scale: 3,
+        scale: 6,
         useCORS: true,
       });
+
+      const lien = document.createElement("a");
+      lien.download = "ma-frite.png";
+      lien.href = canvas.toDataURL("image/png", 1.0);
+      lien.click();
 
       canvas.toBlob((blob) => {
         if (!blob) {
