@@ -356,16 +356,17 @@ function App() {
                 transformOrigin: "center center",
               }}
             >
-              <img
-                src={frite}
-                alt="Frite"
+              <div
                 style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
                   width: "100%",
                   height: "100%",
-                  objectFit: "contain",
+                  backgroundImage: `url(${frite})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "contain",
                 }}
               />
             </div>
@@ -532,14 +533,14 @@ function App() {
                 position: "relative",
               }}
             >
-              <img
-                src={objet.image}
-                alt=""
-                draggable={false}
+              <div
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "contain",
+                  backgroundImage: `url(${objet.image})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "contain",
                   transform: `rotate(${objet.rotation}deg)`,
                   transformOrigin: "center center",
                   userSelect: "none",
