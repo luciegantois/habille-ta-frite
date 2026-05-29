@@ -257,7 +257,7 @@ function App() {
           fontWeight: "bold",
         }}
       >
-      Prendre une photo
+        Prendre une photo
 
         <input
           type="file"
@@ -273,31 +273,31 @@ function App() {
         />
       </label>
       <label
-  style={{
-    display: "inline-block",
-    padding: "12px 18px",
-    background: "#2196f3",
-    color: "white",
-    borderRadius: "999px",
-    cursor: "pointer",
-    margin: "5px",
-    fontWeight: "bold",
-  }}
->
-  Choisir une image
+        style={{
+          display: "inline-block",
+          padding: "12px 18px",
+          background: "#2196f3",
+          color: "white",
+          borderRadius: "999px",
+          cursor: "pointer",
+          margin: "5px",
+          fontWeight: "bold",
+        }}
+      >
+        Choisir une image
 
-  <input
-    type="file"
-    accept="image/*"
-    style={{ display: "none" }}
-    onChange={(e) => {
-      const fichier = e.target.files?.[0];
-      if (fichier) {
-        setDecor(URL.createObjectURL(fichier));
-      }
-    }}
-  />
-</label>
+        <input
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          onChange={(e) => {
+            const fichier = e.target.files?.[0];
+            if (fichier) {
+              setDecor(URL.createObjectURL(fichier));
+            }
+          }}
+        />
+      </label>
 
       <div
         ref={zoneRef}
@@ -359,13 +359,12 @@ function App() {
               <img
                 src={frite}
                 alt="Frite"
-                draggable={false}
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  userSelect: "none",
-                  pointerEvents: "none",
+                  position: "absolute",
+                  top: 0,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "250px",
                 }}
               />
             </div>
