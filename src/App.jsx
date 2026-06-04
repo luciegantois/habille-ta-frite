@@ -3,7 +3,7 @@ import { Rnd } from "react-rnd";
 import html2canvas from "html2canvas";
 
 import frite from "./assets/corps/frite.png";
-import logoJDL from ".assets/logo/LOGO_JDL.png";
+import logoJDL from "./assets/logo/LOGO_JDL.png";
 
 const chapeaux = Object.values(
   import.meta.glob("./assets/chapeaux/*.png", {
