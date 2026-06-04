@@ -668,7 +668,7 @@ function App() {
           boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
         }}
       >
-        💾 Enregistrer l’image
+        Enregistrer l’image
       </button>
 
       <h2 style={{ color: "#d35400", textTransform: "capitalize" }}>
