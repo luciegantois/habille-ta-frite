@@ -467,6 +467,19 @@ function App() {
           </div>
         </Rnd>
 
+         <img
+          src={logoJDL}
+          alt="Logo JDL"
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            left: "10px",
+            width: "60px",
+            zIndex: 50,
+            pointerEvents: "none",
+          }}
+        />
+
         {objetsAjoutes.map((objet) => (
           <Rnd
             key={objet.id}
@@ -635,9 +648,9 @@ function App() {
             flexWrap: "wrap",
           }}
         >
-          {boutonMenu("chapeaux", "Chapeaux", "🎩")}
-          {boutonMenu("tenues", "Tenues", "👕")}
-          {boutonMenu("accessoires", "Accessoires", "🕶️")}
+          {boutonMenu("chapeaux", "Chapeaux")}
+          {boutonMenu("tenues", "Tenues")}
+          {boutonMenu("accessoires", "Accessoires")}
         </div>
       </div>
 
