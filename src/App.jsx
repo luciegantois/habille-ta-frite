@@ -45,7 +45,7 @@ function App() {
   const zoneRef = useRef(null);
 
   const menus = {
-    tête,
+    chapeaux,
     tenues,
     accessoires,
   };
