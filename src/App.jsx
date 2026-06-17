@@ -171,7 +171,7 @@ function App() {
 
       const canvas = await html2canvas(zoneRef.current, {
         backgroundColor: "#fff7d6",
-        scale: 6,
+        scale: 3,
         useCORS: true,
       });
 
@@ -467,7 +467,7 @@ function App() {
           </div>
         </Rnd>
 
-         <img
+        <img
           src={logoJDL}
           alt="Logo JDL"
           style={{
