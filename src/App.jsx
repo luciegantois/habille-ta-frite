@@ -173,9 +173,12 @@ function App() {
         logging: false,
       });
 
-      // Un seul téléchargement via toBlob
       canvas.toBlob((blob) => {
-        if (!blob) { alert("Erreur image"); return; }
+        if (!blob) {
+          alert("Erreur image");
+          setEnregistrement(false); // ← ici en cas d'erreur
+          return;
+        }
         const url = URL.createObjectURL(blob);
         const lien = document.createElement("a");
         lien.href = url;
@@ -184,14 +187,15 @@ function App() {
         lien.click();
         document.body.removeChild(lien);
         URL.revokeObjectURL(url);
+        setEnregistrement(false); // ← ici, une fois tout terminé
       }, "image/png", 1.0);
 
     } catch (err) {
       console.error(err);
       alert("Impossible d'enregistrer.");
-    } finally {
-      setEnregistrement(false);
+      setEnregistrement(false); // ← ici en cas d'exception
     }
+    // ← plus de finally
   }
 
 
