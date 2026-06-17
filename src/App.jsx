@@ -156,54 +156,44 @@ function App() {
 
   async function enregistrerImage(e) {
     e.stopPropagation();
-
     try {
       setObjetSelectionne(null);
       setFriteSelectionnee(false);
       setEnregistrement(true);
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
-      await new Promise((resolve) => setTimeout(resolve, 200));
-
-      if (!zoneRef.current) {
-        alert("Zone introuvable");
-        return;
-      }
+      if (!zoneRef.current) return;
 
       const canvas = await html2canvas(zoneRef.current, {
         backgroundColor: "#fff7d6",
         scale: 3,
         useCORS: true,
+        allowTaint: true,
+        imageTimeout: 0,
+        logging: false,
       });
 
-      const lien = document.createElement("a");
-      lien.download = "ma-frite.png";
-      lien.href = canvas.toDataURL("image/png", 1.0);
-      lien.click();
-
+      // Un seul téléchargement via toBlob
       canvas.toBlob((blob) => {
-        if (!blob) {
-          alert("Erreur pendant la création de l'image");
-          return;
-        }
-
+        if (!blob) { alert("Erreur image"); return; }
         const url = URL.createObjectURL(blob);
         const lien = document.createElement("a");
-
         lien.href = url;
         lien.download = "ma-frite.png";
         document.body.appendChild(lien);
         lien.click();
         document.body.removeChild(lien);
-
         URL.revokeObjectURL(url);
-      }, "image/png");
-    } catch (error) {
-      console.error(error);
-      alert("Impossible d'enregistrer l'image. Regarde la console.");
+      }, "image/png", 1.0);
+
+    } catch (err) {
+      console.error(err);
+      alert("Impossible d'enregistrer.");
     } finally {
       setEnregistrement(false);
     }
   }
+
 
   const boutonMenu = (nom, label, emoji) => (
     <button
@@ -272,9 +262,10 @@ function App() {
           style={{ display: "none" }}
           onChange={(e) => {
             const fichier = e.target.files?.[0];
-            if (fichier) {
-              setDecor(URL.createObjectURL(fichier));
-            }
+            if (!fichier) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => setDecor(ev.target.result); // base64, pas blob URL
+            reader.readAsDataURL(fichier);
           }}
         />
       </label>
@@ -360,19 +351,21 @@ function App() {
                 height: "100%",
                 transform: `rotate(${positionFrite.rotation}deg)`,
                 transformOrigin: "center center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              <div
+              <img
+                src={frite}
+                alt=""
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  backgroundImage: `url(${frite})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "contain",
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  width: "auto",
+                  height: "auto",
+                  pointerEvents: "none",
+                  display: "block",
                 }}
               />
             </div>
@@ -552,20 +545,32 @@ function App() {
                 position: "relative",
               }}
             >
+              {/* Wrapper rotation — l'img EST DEDANS */}
               <div
                 style={{
                   width: "100%",
                   height: "100%",
-                  backgroundImage: `url(${objet.image})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "contain",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                   transform: `rotate(${objet.rotation}deg)`,
                   transformOrigin: "center center",
-                  userSelect: "none",
-                  pointerEvents: "none",
                 }}
-              />
+              >
+                <img
+                  src={objet.image}
+                  alt=""
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    width: "auto",
+                    height: "auto",
+                    userSelect: "none",
+                    pointerEvents: "none",
+                    display: "block",
+                  }}
+                />
+              </div>
 
               {objetSelectionne === objet.id && !enregistrement && (
                 <>
