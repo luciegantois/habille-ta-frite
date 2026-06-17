@@ -6,7 +6,7 @@ import frite from "./assets/corps/frite.png";
 import logoJDL from "./assets/logo/LOGO_JDL.png";
 
 const tete = Object.values(
-  import.meta.glob("./assets//*.png", {
+  import.meta.glob("./assets/chapeaux/*.png", {
     eager: true,
     import: "default",
   })
