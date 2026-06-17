@@ -264,8 +264,9 @@ function App() {
             const fichier = e.target.files?.[0];
             if (!fichier) return;
             const reader = new FileReader();
-            reader.onload = (ev) => setDecor(ev.target.result); // base64, pas blob URL
+            reader.onload = (ev) => setDecor(ev.target.result); // base64 stable
             reader.readAsDataURL(fichier);
+            e.target.value = "";
           }}
         />
       </label>
@@ -283,17 +284,21 @@ function App() {
       >
         Choisir une image
 
+        {/* Choisir une image */}
         <input
           type="file"
           accept="image/*"
           style={{ display: "none" }}
           onChange={(e) => {
             const fichier = e.target.files?.[0];
-            if (fichier) {
-              setDecor(URL.createObjectURL(fichier));
-            }
+            if (!fichier) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => setDecor(ev.target.result); // base64 au lieu de blob URL
+            reader.readAsDataURL(fichier);
+            e.target.value = ""; // ← ajout
           }}
         />
+
       </label>
 
       <div
