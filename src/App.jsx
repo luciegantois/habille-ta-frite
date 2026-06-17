@@ -5,8 +5,8 @@ import html2canvas from "html2canvas";
 import frite from "./assets/corps/frite.png";
 import logoJDL from "./assets/logo/LOGO_JDL.png";
 
-const chapeaux = Object.values(
-  import.meta.glob("./assets/chapeaux/*.png", {
+const tete = Object.values(
+  import.meta.glob("./assets//*.png", {
     eager: true,
     import: "default",
   })
@@ -27,7 +27,7 @@ const accessoires = Object.values(
 );
 
 function App() {
-  const [menuActif, setMenuActif] = useState("chapeaux");
+  const [menuActif, setMenuActif] = useState("tete");
   const [objetsAjoutes, setObjetsAjoutes] = useState([]);
   const [objetSelectionne, setObjetSelectionne] = useState(null);
   const [enregistrement, setEnregistrement] = useState(false);
@@ -45,13 +45,13 @@ function App() {
   const zoneRef = useRef(null);
 
   const menus = {
-    chapeaux,
+    tete,
     tenues,
     accessoires,
   };
 
   useEffect(() => {
-    [...chapeaux, ...tenues, ...accessoires, frite].forEach((src) => {
+    [...tete, ...tenues, ...accessoires, frite].forEach((src) => {
       const img = new Image();
       img.src = src;
     });
@@ -648,7 +648,7 @@ function App() {
             flexWrap: "wrap",
           }}
         >
-          {boutonMenu("chapeaux", "Chapeaux")}
+          {boutonMenu("tete", "Tête")}
           {boutonMenu("tenues", "Tenues")}
           {boutonMenu("accessoires", "Accessoires")}
         </div>
