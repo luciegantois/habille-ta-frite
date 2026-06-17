@@ -27,34 +27,64 @@ const accessoires = Object.values(
 );
 
 function App() {
+  // 1. Tous les useState d'abord
   const [menuActif, setMenuActif] = useState("tete");
   const [objetsAjoutes, setObjetsAjoutes] = useState([]);
   const [objetSelectionne, setObjetSelectionne] = useState(null);
   const [enregistrement, setEnregistrement] = useState(false);
   const [decor, setDecor] = useState(null);
   const [friteSelectionnee, setFriteSelectionnee] = useState(false);
-
-  const [positionFrite, setPositionFrite] = useState({
-    x: 75,
-    y: 100,
-    width: 150,
-    height: 180,
-    rotation: 0,
-  });
+  const [positionFrite, setPositionFrite] = useState({ x: 75, y: 100, width: 150, height: 180, rotation: 0 });
+  const [friteBase64, setFriteBase64] = useState(frite);
+  const [imagesBase64, setImagesBase64] = useState({ tete: [], tenues: [], accessoires: [] });
+  const [logoBase64, setLogoBase64] = useState(logoJDL);
 
   const zoneRef = useRef(null);
 
+  // 2. menus APRÈS les states
   const menus = {
-    tete,
-    tenues,
-    accessoires,
+    tete: imagesBase64.tete,
+    tenues: imagesBase64.tenues,
+    accessoires: imagesBase64.accessoires,
   };
 
+  // 3. Les useEffect ensuite
   useEffect(() => {
-    [...tete, ...tenues, ...accessoires, frite].forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
+    fetch(frite)
+      .then(r => r.blob())
+      .then(blob => new Promise(resolve => {
+        const reader = new FileReader();
+        reader.onload = e => resolve(e.target.result);
+        reader.readAsDataURL(blob);
+      }))
+      .then(setFriteBase64);
+  }, []);
+
+  useEffect(() => {
+    async function convertirEnBase64(src) {
+      const res = await fetch(src);
+      const blob = await res.blob();
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    async function chargerTout() {
+      const [t, te, a, f, logo] = await Promise.all([
+        Promise.all(tete.map(convertirEnBase64)),
+        Promise.all(tenues.map(convertirEnBase64)),
+        Promise.all(accessoires.map(convertirEnBase64)),
+        convertirEnBase64(frite),
+        convertirEnBase64(logoJDL),
+      ]);
+      setImagesBase64({ tete: t, tenues: te, accessoires: a });
+      setFriteBase64(f);
+      setLogoBase64(logo);
+    }
+
+    chargerTout();
   }, []);
 
   function ajouterObjet(image) {
@@ -366,7 +396,7 @@ function App() {
               }}
             >
               <img
-                src={frite}
+                src={friteBase64}
                 alt=""
                 style={{
                   maxWidth: "100%",
@@ -470,7 +500,7 @@ function App() {
         </Rnd>
 
         <img
-          src={logoJDL}
+          src={logoBase64}
           alt="Logo JDL"
           style={{
             position: "absolute",
