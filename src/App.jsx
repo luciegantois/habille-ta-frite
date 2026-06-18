@@ -4,7 +4,7 @@ import html2canvas from "html2canvas";
 
 import frite from "./assets/corps/frite.png";
 import logoJDL from "./assets/logo/LOGO_JDL.png";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next"
 
 const tete = Object.values(
   import.meta.glob("./assets/chapeaux/*.png", {
@@ -756,6 +756,7 @@ function App() {
           />
         ))}
       </div>
+      <Analytics />
     </div>
   );
 }
