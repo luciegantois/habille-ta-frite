@@ -3,16 +3,16 @@ body {
 }
 
 .page-menu {
-  margin: 0;
-  background: #e91e63;
+    margin: 0;
+    background: #e91e63;
 }
-
 .menu-image {
-  display: block;
-  width: 100%;
-  height: auto;
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 80px auto 30px;
 }
-
 .btn-retour {
   position: fixed;
   top: 15px;
