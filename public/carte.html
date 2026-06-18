@@ -4,12 +4,10 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Barquette</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-
-  <title>Barquette</title>
 
   <style>
     * {
@@ -104,7 +102,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
       gap: 20px;
     }
 
@@ -205,19 +203,14 @@
       letter-spacing: 2px;
     }
 
-    @media (max-width: 768px) {
-
-      .infos-grid,
+    @media screen and (max-width: 768px) {
       .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
+        display: grid;
+        grid-template-columns: 1fr !important;
       }
 
       .card {
-        min-height: auto;
+        width: 100%;
       }
     }
   </style>
