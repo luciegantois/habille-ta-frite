@@ -1,107 +1,323 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La carte - Habille ta frite</title>
+  <meta charset="UTF-8">
+  <title>Barquette</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+  <title>Barquette</title>
+
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #fff3c4, #ffe1ec);
-      color: #2b2b2b;
-      padding: 20px;
+      padding: 0;
     }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    /* HEADER */
+
+    .hero {
+      background: #e91e63;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: .95;
+    }
+
+    /* CONTENU */
 
     .container {
-      max-width: 900px;
+      max-width: 1200px;
       margin: auto;
-    }
-
-    h1 {
-      color: #d35400;
-      text-align: center;
-      font-size: 36px;
-    }
-
-    .bloc {
-      background: rgba(255,255,255,0.8);
-      border-radius: 22px;
       padding: 20px;
-      margin: 18px 0;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
     }
 
-    h2 {
-      color: #d35400;
-      margin-top: 0;
+    /* INFOS */
+
+    .infos {
+      background: white;
+      border-radius: 25px;
+      padding: 30px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
     }
 
-    .categories {
+    .infos h2 {
+      text-align: center;
+      color: #e91e63;
+      margin-bottom: 25px;
+      font-size: 2rem;
+    }
+
+    .infos-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      text-align: center;
     }
 
-    .categorie {
-      background: #fff7d6;
-      border-radius: 18px;
-      padding: 16px;
-      border: 3px solid white;
+    .info-item {
+      padding: 15px;
     }
 
-    .categorie h3 {
-      margin-top: 0;
-      color: #d35400;
+    .info-item h3 {
+      margin-bottom: 8px;
     }
+
+    /* TITRE SECTION */
+
+    .section-title {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .section-title h2 {
+      display: inline-block;
+      background: black;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    /* CARTES */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      border-radius: 25px;
+      padding: 25px;
+      min-height: 280px;
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+
+    .card img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+    }
+
+    .btn-menu {
+      display: inline-block;
+      padding: 12px 24px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    /* COULEURS DU MENU */
+
+    .burgers {
+      background: #ef1f6b;
+      color: white;
+    }
+
+    .sale {
+      background: #f5d000;
+    }
+
+    .fraicheur {
+      background: #c6d97b;
+    }
+
+    .boissons {
+      background: #3d86b8;
+      color: white;
+    }
+
+    .sucre {
+      background: #ef6cb1;
+      color: white;
+    }
+
+    .menus {
+      background: #b8d4f0;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      background: #111;
+      color: white;
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 25px;
+      text-align: center;
+    }
+
+    .btn-menu {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .btn-menu:hover {
+      transform: translateY(-2px);
+    }
+
+    .wave {
+      text-align: center;
+      font-size: 20px;
+      color: #5b2c2c;
+      letter-spacing: 2px;
+    }
+
+
   </style>
+
 </head>
 
 <body>
+
+  <header class="hero">
+    <h1>Barquette</h1>
+  </header>
+
   <div class="container">
-    <h1>🍟 La carte</h1>
+    <section class="infos">
 
-    <section class="bloc">
       <h2>Infos utiles</h2>
-      <p>Les informations utiles seront ajoutées prochainement.</p>
-      <p>Horaires, adresse, contact, moyens de paiement, commande, événements...</p>
-    </section>
 
-    <section class="bloc">
-      <h2>Nos menus et produits</h2>
+      <div class="infos-grid">
 
-      <div class="categories">
-        <div class="categorie">
-          <h3>🍔 Burgers</h3>
-          <p>Simple, Cheese, Classic, Royal, Kiiid, burger du moment...</p>
+        <div class="info-item">
+          <h3><i class="fa-solid fa-location-dot"></i> Adresse</h3>
+          <p>À compléter</p>
         </div>
 
-        <div class="categorie">
-          <h3>Côté salé</h3>
-          <p>Frites, steak haché, chipolatas, merguez, andouillette...</p>
+        <div class="info-item">
+          <h3><i class="fa-solid fa-clock"></i> Horaires</h3>
+          <p>À compléter</p>
         </div>
 
-        <div class="categorie">
-          <h3>Côté fraîcheur</h3>
-          <p>Salades et wraps.</p>
+        <div class="info-item">
+          <h3><i class="fa-solid fa-phone"></i> Contact</h3>
+          <p>À compléter</p>
         </div>
 
-        <div class="categorie">
-          <h3>Boissons</h3>
-          <p>Eau, sodas, jus, cafés, vin, bière, cidre...</p>
+        <div class="info-item">
+          <h3><i class="fa-solid fa-credit-card"></i> Paiement</h3>
+          <p>À compléter</p>
         </div>
 
-        <div class="categorie">
-          <h3>Côté sucré</h3>
-          <p>Glaces, cônes, gaufres et parfums sucrés.</p>
-        </div>
-
-        <div class="categorie">
-          <h3>Menus</h3>
-          <p>Menu burger, menu Classic, menu Kiiid, menu wrap.</p>
-        </div>
       </div>
+
     </section>
+
+    <div class="section-title">
+      <h2>Nos menus et produits</h2>
+    </div>
+
+    <div class="grid">
+
+      <div class="card burgers">
+        <h3>Burgers</h3>
+        <img src="images/1-burger.png" alt="Burger">
+
+        <a class="btn-menu" href="/menu.pdf" target="_blank">
+          Voir la carte
+        </a>
+      </div>
+
+      <div class="card sale">
+        <h3>Côté salé</h3>
+        <img src="images/2-sale.png" alt="Salé">
+
+        <a class="btn-menu" href="/menu.pdf" target="_blank">
+          Voir la carte
+        </a>
+      </div>
+
+      <div class="card fraicheur">
+        <h3>Côté fraîcheur</h3>
+        <img src="images/3-fraicheur.png" alt="Fraicheur">
+
+        <a class="btn-menu" href="/menu.pdf" target="_blank">
+          Voir la carte
+        </a>
+      </div>
+
+      <div class="card boissons">
+        <h3>Boissons</h3>
+        <img src="images/4-boissons.png" alt="Boisson">
+
+        <a class="btn-menu" href="/menu.pdf" target="_blank">
+          Voir la carte
+        </a>
+      </div>
+
+      <div class="card sucre">
+        <h3>Côté sucré</h3>
+        <img src="images/5_sucre.png" alt="Sucrée">
+
+        <a class="btn-menu" href="/menu.pdf" target="_blank">
+          Voir la carte
+        </a>
+      </div>
+
+      <div class="card menus">
+        <h3>Menus</h3>
+        <div class="wave">
+          <svg viewBox="0 0 300 20" width="100%" height="20">
+            <path
+              d="M0 10 Q10 0 20 10 T40 10 T60 10 T80 10 T100 10 T120 10 T140 10 T160 10 T180 10 T200 10 T220 10 T240 10 T260 10 T280 10 T300 10"
+              fill="none" stroke="#5b2c2c" stroke-width="2" />
+          </svg>
+        </div> <a class="btn-menu" href="/menu.pdf" target="_blank">
+          Voir la carte
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      Merci de votre visite et bon appétit !
+    </div>
   </div>
+
 </body>
+
 </html>
