@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La carte - Habille ta frite</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #fff3c4, #ffe1ec);
+      color: #2b2b2b;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #d35400;
+      text-align: center;
+      font-size: 36px;
+    }
+
+    .bloc {
+      background: rgba(255,255,255,0.8);
+      border-radius: 22px;
+      padding: 20px;
+      margin: 18px 0;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      color: #d35400;
+      margin-top: 0;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .categorie {
+      background: #fff7d6;
+      border-radius: 18px;
+      padding: 16px;
+      border: 3px solid white;
+    }
+
+    .categorie h3 {
+      margin-top: 0;
+      color: #d35400;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🍟 La carte</h1>
+
+    <section class="bloc">
+      <h2>Infos utiles</h2>
+      <p>Les informations utiles seront ajoutées prochainement.</p>
+      <p>Horaires, adresse, contact, moyens de paiement, commande, événements...</p>
+    </section>
+
+    <section class="bloc">
+      <h2>Nos menus et produits</h2>
+
+      <div class="categories">
+        <div class="categorie">
+          <h3>🍔 Burgers</h3>
+          <p>Simple, Cheese, Classic, Royal, Kiiid, burger du moment...</p>
+        </div>
+
+        <div class="categorie">
+          <h3>🍟 Côté salé</h3>
+          <p>Frites, steak haché, chipolatas, merguez, andouillette...</p>
+        </div>
+
+        <div class="categorie">
+          <h3>🥗 Côté fraîcheur</h3>
+          <p>Salades et wraps.</p>
+        </div>
+
+        <div class="categorie">
+          <h3>🥤 Boissons</h3>
+          <p>Eau, sodas, jus, cafés, vin, bière, cidre...</p>
+        </div>
+
+        <div class="categorie">
+          <h3>🧇 Côté sucré</h3>
+          <p>Glaces, cônes, gaufres et parfums sucrés.</p>
+        </div>
+
+        <div class="categorie">
+          <h3>📋 Menus</h3>
+          <p>Menu burger, menu Classic, menu Kiiid, menu wrap.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
