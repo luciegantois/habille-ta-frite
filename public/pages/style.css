@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.page-menu {
+    margin: 0;
+    background: #222;
+}
+
+.btn-retour {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 9999;
+
+    padding: 10px 18px;
+    background: #f5d000;
+    color: black;
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: bold;
+}
+
+.pdf-menu {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    border: 0;
+}
